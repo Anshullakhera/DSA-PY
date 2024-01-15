@@ -1,0 +1,19 @@
+class Solution(object):
+    def findWinners(self, matches):
+        """
+        :type matches: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        win =[0]*100001
+        loss =[0]*100001
+        for i in matches:
+            win[i[0]]+=1
+            loss[i[1]]+=1
+        ans=[[],[]]
+        for i in range(100001):
+            if win[i]>0 and loss[i]==0:
+                ans[0].append(i)
+            if loss[i] == 1:
+                ans[1].append(i)
+        return ans
+                
